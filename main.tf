@@ -7,9 +7,10 @@ module "ec2" {
   ami_id                = "ami-0e86e20dae9224db8"
   vpc_id              = module.vpc.vpc_id
   subnet_id           = module.vpc.public_subnet_id
-  instance_profile    = "my-instance-profile"
-  key_name = "xyz"
-  security_group_ids = ["any"]
+  instance_profile    = "ec2_instance_profile"
+  key_name = "gradPKeypair"
+  sqs_arn = module.sqs.arn
+  security_group_ids = [module.ec2.ec2_sg]
 }
 
 module "sqs" {

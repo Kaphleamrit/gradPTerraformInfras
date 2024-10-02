@@ -25,6 +25,7 @@ resource "aws_iam_policy" "sqs_access_policy" {
     Version = "2012-10-17"
     Statement = [
       {
+        Effect = "Allow"
         Action = [
           "sqs:SendMessage",
           "sqs:ReceiveMessage",
@@ -32,12 +33,12 @@ resource "aws_iam_policy" "sqs_access_policy" {
           "sqs:GetQueueAttributes",
           "sqs:ChangeMessageVisibility"
         ]
-        Effect   = "Allow"
-        Resource = "arn:aws:sqs:REGION:ACCOUNT_ID:your-sqs-queue-name.fifo"  # Change with your SQS ARN
+        Resource = var.sqs_arn
       }
     ]
   })
 }
+
 
 # Attach the policy to the role
 resource "aws_iam_role_policy_attachment" "attach_sqs_policy" {
@@ -84,7 +85,7 @@ resource "aws_instance" "nodejs_app" {
   subnet_id                   = var.subnet_id
   vpc_security_group_ids      = [aws_security_group.ec2_sg.id]
   iam_instance_profile        = var.instance_profile
-  key_name                    = "my-key-pair" # Replace with your key pair name
+  key_name                    = var.key_name # Replace with your key pair name
 
   tags = {
     Name = "NodeJSAppInstance"

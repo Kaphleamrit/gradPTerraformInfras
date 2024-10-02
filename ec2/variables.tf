@@ -35,3 +35,7 @@ variable "security_group_ids" {
   type        = list(string)
 }
 
+variable "sqs_arn" {
+  description = "ARN on the SQS FIFO"
+  type = string
+}
