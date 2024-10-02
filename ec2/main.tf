@@ -87,6 +87,9 @@ resource "aws_instance" "nodejs_app" {
   iam_instance_profile        = var.instance_profile
   key_name                    = var.key_name # Replace with your key pair name
 
+  user_data = templatefile("${path.module}/userdata.tpl", {
+    sqs_queue_url = module.sqs.sqs_queue_url
+  })
   tags = {
     Name = "NodeJSAppInstance"
   }
