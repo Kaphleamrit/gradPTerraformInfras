@@ -11,6 +11,7 @@ module "ec2" {
   key_name = "gradPKeypair"
   sqs_arn = module.sqs.arn
   security_group_ids = [module.ec2.ec2_sg]
+  sqs_queue_url = module.sqs.sqs_queue_url
 }
 
 module "sqs" {

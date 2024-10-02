@@ -39,3 +39,8 @@ variable "sqs_arn" {
   description = "ARN on the SQS FIFO"
   type = string
 }
+
+variable "sqs_queue_url" {
+  description = "SQS queue URL"
+  type = string
+}

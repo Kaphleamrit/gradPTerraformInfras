@@ -14,7 +14,7 @@ sudo apt-get install -y git
 cd /home/ubuntu
 
 # Clone your frontend app repository (replace with your repo URL)
-git clone https://github.com/your-repo/frontend-app.git
+git clone https://github.com/Kaphleamrit/graduateProjectWeb.git
 
 # Navigate into the app directory
 cd frontend-app
